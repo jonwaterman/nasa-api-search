@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>NASA Image Search</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+      <h1 class="title">NASA Image Search</h1>
+    <div class="container">
+        <div id="search-switch">
+            <label class="switch-label">Basic</label>
+            <label class="switch">
+                <input type="checkbox" id="search-checkbox" onclick="myFunction()">
+                <span class="slider round"></span>
+            </label>
+            <label class="switch-label">Advanced</label>
+        </div>
+        <form action="/" method="post">
+          <input name="search" type="text" class="ghost-input" placeholder="Search for images..." required>
+          
+            <input name="year_start" type="text" class="ghost-input-alt" id="alt-input1" placeholder="Specify by start year">
+            <input name="year_end" type="text" class="ghost-input-alt" id="alt-input2" placeholder="Specify by end year">
+            <input name="location" type="text" class="ghost-input-alt" id="alt-input3" placeholder="Specify by location">
+        
+          <input type="submit" class="ghost-button" value="Get Search Results">
+        </form>
+
+        <% if(results !== null){ %>
+            <%  for (i = 0; i < results.collection.items.length; i++) {%>
+                <div class="results-box"><h1><%=results.collection.items[i].data[0].title%></h1>
+                    
+                <% if(results.collection.items[i].links && results.collection.items[i].links.length > 0){ %>
+                    <img src="<%=results.collection.items[i].links[0].href%>" alt="<%=results.collection.items[i].data[0].title%>">
+                <%}%>
+                    
+                    <p><%=results.collection.items[i].data[0].description%></p>
+                    <p><%=results.collection.items[i].data[0].location%></p>
+                    <p><%=results.collection.items[i].data[0].date_created%></p>
+                
+                <% if(results.collection.items[i].links && results.collection.items[i].links.length > 0){ %>
+                    <a href='<%=results.collection.items[i].links[0].href%>'><%=results.collection.items[i].links[0].href%></a>
+                <%}%>
+                
+                    
+                </div>
+            <% } %>
+
+        <% } %>
+
+        <% if(error !== null){ %>
+          <p><%= error %></p>
+        <% } %>
+    </div>
+        <script>
+            function myFunction() {
+                console.log("testing")
+                var checkBox = document.getElementById("search-checkbox");
+
+                var input1 = document.getElementById("alt-input1");
+                var input2 = document.getElementById("alt-input2");
+                var input3 = document.getElementById("alt-input3");
+
+                if (checkBox.checked == true){
+                    input1.style.display = "block";
+                    input2.style.display = "block";
+                    input3.style.display = "block";
+                } else {
+                    input1.style.display = "none";
+                    input2.style.display = "none";
+                    input3.style.display = "none";    
+                }
+            }            
+        </script>
+  </body>
+</html>
+    
