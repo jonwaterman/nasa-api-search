@@ -24,7 +24,7 @@ body {
     min-width: -webkit-min-content;
     padding: 30px;
   }
-  .ghost-input, p {
+  .ghost-input {
     display: block;
     font-weight:300;
     width: 100%;
@@ -50,7 +50,7 @@ body {
     border-bottom:1px solid #135c97;
   }
 
-  .ghost-input-alt, p {
+  .ghost-input-alt {
     display: none;
     font-weight:300;
     width: 100%;
@@ -91,10 +91,10 @@ body {
     border:3px solid #ddd;
     background-color: #135c97;
   } 
-  p {
-    color: #135c97;
+  /* p {
+    color: #4b545f;
     font-size: 25px;
-  }
+  } */
   .results-box {
     border: 1px solid #135c97;
     padding: 25px;

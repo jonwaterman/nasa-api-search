@@ -26,6 +26,7 @@
         
           <input type="submit" class="ghost-button" value="Get Search Results">
         </form>
+        <h3><%=results.collection.metadata.total_hits%> results</h1>
 
         <% if(results !== null){ %>
             <%  for (i = 0; i < results.collection.items.length; i++) {%>
@@ -35,9 +36,9 @@
                     <img src="<%=results.collection.items[i].links[0].href%>" alt="<%=results.collection.items[i].data[0].title%>">
                 <%}%>
                     
-                    <p><%=results.collection.items[i].data[0].description%></p>
-                    <p><%=results.collection.items[i].data[0].location%></p>
-                    <p><%=results.collection.items[i].data[0].date_created%></p>
+                    <h3><%=results.collection.items[i].data[0].description%></h3>
+                    <h3><%=results.collection.items[i].data[0].location%></h3>
+                    <h3><%=results.collection.items[i].data[0].date_created%></h3>
                 
                 <% if(results.collection.items[i].links && results.collection.items[i].links.length > 0){ %>
                     <a href='<%=results.collection.items[i].links[0].href%>'><%=results.collection.items[i].links[0].href%></a>
