@@ -26,9 +26,10 @@
         
           <input type="submit" class="ghost-button" value="Get Search Results">
         </form>
-        <h3><%=results.collection.metadata.total_hits%> results</h1>
+        
 
         <% if(results !== null){ %>
+            <h3><%=results.collection.metadata.total_hits%> results</h1>
             <%  for (i = 0; i < results.collection.items.length; i++) {%>
                 <div class="results-box"><h1><%=results.collection.items[i].data[0].title%></h1>
                     

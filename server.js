@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const request = require('request');
 const app = express()
 
+var port = process.env.PORT|| 8080;
+
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs')
@@ -54,8 +56,8 @@ app.post('/', function (req, res) {
     });
 })
 
-app.listen(3000, function () {
-    console.log('NASA app listening on port 3000!')
+app.listen(port, function () {
+    console.log('NASA app listening on port ' + port)
 })
 
 //DONT FORGET
