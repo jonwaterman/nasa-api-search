@@ -7,8 +7,9 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
   </head>
   <body>
-      <h1 class="title">NASA Image Search</h1>
+      
     <div class="container">
+        <h1 class="title">NASA Image Search</h1>
         <div id="search-switch">
             <label class="switch-label">Basic</label>
             <label class="switch">
@@ -18,6 +19,7 @@
             <label class="switch-label">Advanced</label>
         </div>
         <form action="/" method="post">
+
           <input name="search" type="text" class="ghost-input" placeholder="Search for images..." required>
           
             <input name="year_start" type="text" class="ghost-input-alt" id="alt-input1" placeholder="Specify by start year">
@@ -30,24 +32,35 @@
 
         <% if(results !== null){ %>
             <h3><%=results.collection.metadata.total_hits%> results</h1>
+                
             <%  for (i = 0; i < results.collection.items.length; i++) {%>
-                <div class="results-box"><h1><%=results.collection.items[i].data[0].title%></h1>
-                    
-                <% if(results.collection.items[i].links && results.collection.items[i].links.length > 0){ %>
-                    <img src="<%=results.collection.items[i].links[0].href%>" alt="<%=results.collection.items[i].data[0].title%>">
-                <%}%>
-                    
-                    <h3><%=results.collection.items[i].data[0].description%></h3>
-                    <h3><%=results.collection.items[i].data[0].location%></h3>
-                    <h3><%=results.collection.items[i].data[0].date_created%></h3>
-                
-                <% if(results.collection.items[i].links && results.collection.items[i].links.length > 0){ %>
-                    <a href='<%=results.collection.items[i].links[0].href%>'><%=results.collection.items[i].links[0].href%></a>
-                <%}%>
-                
-                    
-                </div>
+                <div class="results-box"><h1><%=results.collection.items[i].data[0].title%></h1> 
+                    <% if(results.collection.items[i].links && results.collection.items[i].links.length > 0){ %>
+                        <img src="<%=results.collection.items[i].links[0].href%>" alt="<%=results.collection.items[i].data[0].title%>">
+                    <%}%>
+
+                    <% if(results.collection.items[i].data[0].description){ %>
+                        <p><b>Description: </b><%=results.collection.items[i].data[0].description%></p>
+                    <%}%>
+                    <% if(results.collection.items[i].data[0].location){ %>
+                        <p><b>Location: </b><%=results.collection.items[i].data[0].location%></p>
+                    <%}%>
+                    <% if(results.collection.items[i].data[0].date_created){ %>
+                        <p><b>Date Created: </b><%=results.collection.items[i].data[0].date_created%></p>
+                    <%}%>
+                    <% if(results.collection.items[i].data[0].media_type){ %>
+                        <p><b>Media Type: </b><%=results.collection.items[i].data[0].media_type%></p>
+                    <%}%>
+                    <% if(results.collection.items[i].data[0].nasa_id){ %>
+                        <p><b>NASA ID: </b><%=results.collection.items[i].data[0].nasa_id%></p>
+                    <%}%>
+                    <% if(results.collection.items[i].links){ %>
+                        <p><b>Link: </b><a href='<%=results.collection.items[i].links[0].href%>'><%=results.collection.items[i].links[0].href%></a></p>
+                    <%}%>
+                </div>                
+                <div class="results-spacer"></div>
             <% } %>
+            
 
         <% } %>
 
