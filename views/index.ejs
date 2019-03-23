@@ -29,16 +29,13 @@
           <input type="submit" class="ghost-button" value="Get Search Results">
         </form>
         
-
         <% if(results !== null){ %>
-            <h3><%=results.collection.metadata.total_hits%> results</h1>
-                
+            <h3><%=results.collection.metadata.total_hits%> results</h1>   
             <%  for (i = 0; i < results.collection.items.length; i++) {%>
                 <div class="results-box"><h1><%=results.collection.items[i].data[0].title%></h1> 
-                    <% if(results.collection.items[i].links && results.collection.items[i].links.length > 0){ %>
+                    <% if(results.collection.items[i].links){ %>
                         <img src="<%=results.collection.items[i].links[0].href%>" alt="<%=results.collection.items[i].data[0].title%>">
                     <%}%>
-
                     <% if(results.collection.items[i].data[0].description){ %>
                         <p><b>Description: </b><%=results.collection.items[i].data[0].description%></p>
                     <%}%>
@@ -57,11 +54,14 @@
                     <% if(results.collection.items[i].links){ %>
                         <p><b>Link: </b><a href='<%=results.collection.items[i].links[0].href%>'><%=results.collection.items[i].links[0].href%></a></p>
                     <%}%>
+                    <button class="view-metadata-button" url="https://images-assets.nasa.gov/<%=results.collection.items[i].data[0].media_type%>/<%=results.collection.items[i].data[0].nasa_id%>/metadata.json">Metadata</button>
+                    <div class="metadata" >
+                        <p>https://images-api.nasa.gov/metadata/<%=results.collection.items[i].data[0].nasa_id%></p>
+                    </div>
                 </div>                
                 <div class="results-spacer"></div>
             <% } %>
             
-
         <% } %>
 
         <% if(error !== null){ %>
@@ -86,8 +86,49 @@
                     input2.style.display = "none";
                     input3.style.display = "none";    
                 }
-            }            
+            }
+
+            //View Metadata Button
+            var button = document.getElementsByClassName("view-metadata-button");
+            var i;
+
+            for (i = 0; i < button.length; i++) {
+            button[i].addEventListener("click", function() {
+                this.classList.toggle("open");
+
+                let url = this.getAttribute("url")
+                let content = this.nextElementSibling;
+                var objectFound = false;
+                fetch(url).then(res => res.json()).then(data => {
+                    content.innerHTML = "";
+                    for(let key in data){
+                        if(!(typeof data[key] === "object")) {
+                            let node = document.createElement("p");
+                            node.innerHTML = "<b>" + key + "</b>: " + data[key];
+                            content.appendChild(node);
+                        } else {
+                            objectFound = true;
+                        }
+                        
+                    }
+                if(objectFound) {
+                    let node = document.createElement("p");
+                    node.innerHTML = "<i> Not all metadata shown. For full list, visit: " + url;
+                    content.appendChild(node);
+                }
+                })
+
+                if (content.style.display === "block") {
+                content.style.display = "none";
+                } else {
+                content.style.display = "block";
+                }
+            });
+            }
+
+            function isObject (value) {
+                return value && typeof value === 'object' && value.constructor === Object;
+            }
         </script>
   </body>
 </html>
-    
