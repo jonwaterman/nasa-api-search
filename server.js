@@ -66,25 +66,16 @@ app.set('view engine', 'ejs')
                 if (err) {
                     res.render('index', { results: null, error: 'Error, please try again' });
                 } else {
-                    // console.log(response.request.uri)
                     let results = JSON.parse(body)
                     if (results.collection == undefined) {
                         res.render('index', { results: null, error: 'Error, please try again' });
                     } else {
                         res.render('index', { results: results, error: null })
-                        // module.exports.results = results;
                     }
                 }
         });
-
     })
-
 
 app.listen(port, function () {
     console.log('NASA app listening on port ' + port)
 })
-
-//DONT FORGET
-//num of search results
-//no results returned
-//media type selecter
