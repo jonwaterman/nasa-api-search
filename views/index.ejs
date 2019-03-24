@@ -83,8 +83,8 @@
                     
                     <% if(results.collection.items[i].links && results.collection.items[i].data[0].media_type){ %>
 
-                        <a href="https://twitter.com/home?status=Check out this <%=results.collection.items[i].data[0].media_type%>!%0A%0A<%=results.collection.items[i].data[0].title%> (preview):%0A<%=results.collection.items[i].links[0].href%>">
-                            <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c53e.png" alt="Twitter Logo" style="background-color:white; width:50px; height:50px; border: 2px solid #135c97;">
+                        <a href='https://twitter.com/intent/tweet?url=https://nasa-api-search.herokuapp.com&text=Wow! Look up "<%=results.collection.items[i].data[0].title%>" on '>
+                            <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c53e.png" alt="Twitter Logo" style="background-color:white; width:45px; height:45px; border: 2px solid #135c97;">
                         </a>
                     <%}%>
                     
