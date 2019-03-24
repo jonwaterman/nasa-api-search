@@ -8,7 +8,7 @@ var port = process.env.PORT|| 8080;
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs')
-// exports.detect = function () {
+
 
     app.get('/', function (req, res) {
         res.render('index', { results: null, error: null });
@@ -19,13 +19,32 @@ app.set('view engine', 'ejs')
         let year_start = req.body.year_start;
         let year_end = req.body.year_end;
         let location = req.body.location;
+        
+        let include_image = req.body.include_image == 'on';
+        let include_video = req.body.include_video == 'on';
+        let include_audio = req.body.include_audio == 'on';
+
+        let media_type = "";
+
+        if(include_image) {
+            media_type += "image,";
+        }
+        if(include_video) {
+            media_type += "video,";
+        }
+        if(include_audio) {
+            media_type += "audio,";
+        }
+        
+
         const url = `https://images-api.nasa.gov/search`;
 
         let params = {
             q: search,
             year_start: year_start,
             year_end: year_end,
-            location: location
+            location: location,
+            media_type: media_type
         }
 
         if(params["year_start"] == ""){
@@ -43,7 +62,7 @@ app.set('view engine', 'ejs')
         };
 
             request(options, function (err, response, body) {
-                
+
                 if (err) {
                     res.render('index', { results: null, error: 'Error, please try again' });
                 } else {
@@ -57,9 +76,9 @@ app.set('view engine', 'ejs')
                     }
                 }
         });
-    // })
+
     })
-// }
+
 
 app.listen(port, function () {
     console.log('NASA app listening on port ' + port)

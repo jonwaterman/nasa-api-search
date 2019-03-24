@@ -3,12 +3,18 @@ body {
     margin: 0 auto;
     font-family: 'Open Sans', sans-serif;
     background-color: #fff;
-  }
-  .container {
+}
+p {
+    text-align: left;
+    margin-left: 20px;
+
+}
+
+.container {
     width: 600px;
     margin: 0 auto;
-  }
-  fieldset {
+}
+/* fieldset {
     display: block;
     -webkit-margin-start: 0px;
     -webkit-margin-end: 0px;
@@ -23,9 +29,10 @@ body {
     border-image-outset: initial;
     border-image-repeat: initial;
     min-width: -webkit-min-content;
-    padding: 30px;
-  }
-  .ghost-input {
+	padding: 30px;
+} */
+
+.main-search {
     display: block;
     font-weight:300;
     width: 100%;
@@ -46,12 +53,12 @@ body {
     -ms-transition: all 0.1s ease-in-out;
     -o-transition: all 0.1s ease-in-out;
     transition: all 0.1s ease-in-out;
-  }
-  .ghost-input:focus {
+}
+.main-search:focus {
     border-bottom:1px solid #135c97;
-  }
+}
 
-  .ghost-input-alt {
+.adv-search {
     display: none;
     font-weight:300;
     width: 100%;
@@ -72,11 +79,78 @@ body {
     -ms-transition: all 0.1s ease-in-out;
     -o-transition: all 0.1s ease-in-out;
     transition: all 0.1s ease-in-out;
-  }
-  .ghost-input-alt:focus {
+}
+.adv-search:focus {
     border-bottom:1px solid #ddd;
-  }
-  .ghost-button {
+}
+
+.switch-label {
+	display: inline-block;
+	font-size: 12px;
+}
+#search-switch {
+	float: right;
+}
+/*Switch Code*/
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 17px;
+  /*float: right;*/
+  margin: 0px 5px;
+  vertical-align: middle;
+}
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+input:checked + .slider {
+  background-color: #135c97;
+}
+input:focus + .slider {
+  box-shadow: 0 0 1px #135c97;
+}
+input:checked + .slider:before {
+  -webkit-transform: translateX(13px);
+  -ms-transform: translateX(13px);
+  transform: translateX(13px);
+}
+/* Rounded sliders */
+.slider.round {
+  border-radius: 17px;
+}
+.slider.round:before {
+  border-radius: 50%;
+}
+  
+.ghost-button {
     background-color: #135c97;
     padding:10px 30px;
     width: 100%;
@@ -87,17 +161,13 @@ body {
     -o-transition: all 0.1s ease-in-out;
     transition: all 0.1s ease-in-out;
     color: white;
-  }
-  .ghost-button:hover {
+}
+.ghost-button:hover {
     border:3px solid #ddd;
     background-color: #135c97;
-  } 
-  p {
-    text-align: left;
-    margin-left: 20px;
+} 
 
-  }
-  .results-box {
+.results-box {
     border: 5px solid #135c97;
     padding: 10px;
     margin: 25px;
@@ -105,103 +175,30 @@ body {
     margin: auto;
     background-color: #8dccff;
     overflow-wrap: break-word;
-    
-  }
+}
 
-  .results-spacer {
+.results-spacer {
     height: 15px;
-  }
-  .title {
-      color: #135c97;
-      text-align: center;
-      font-size: 40px;
-  }
+}
 
-  img {
+.title {
+    color: #135c97;
+    text-align: center;
+    font-size: 40px;
+}
+
+img {
     /*Edits the size of the images to fit within <div>*/
     max-height: 400px;
     max-width:80%;
     margin-left: auto;
     margin-right: auto;
     display: block;
-  }
+}
 
-  .switch-label {
-      display: inline-block;
-      font-size: 12px;
-  }
-  #search-switch {
-      float: right;
-  }
-  /*Switch Code*/
-  /* The switch - the box around the slider */
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 30px;
-    height: 17px;
-    /*float: right;*/
-    margin: 0px 5px;
-    vertical-align: middle;
 
-  }
-  
-  /* Hide default HTML checkbox */
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  /* The slider */
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .2s;
-    transition: .2s;
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 13px;
-    width: 13px;
-    left: 2px;
-    bottom: 2px;
-    background-color: white;
-    -webkit-transition: .2s;
-    transition: .2s;
-  }
-  
-  input:checked + .slider {
-    background-color: #135c97;
-  }
-  
-  input:focus + .slider {
-    box-shadow: 0 0 1px #135c97;
-  }
-  
-  input:checked + .slider:before {
-    -webkit-transform: translateX(13px);
-    -ms-transform: translateX(13px);
-    transform: translateX(13px);
-  }
-  
-  /* Rounded sliders */
-  .slider.round {
-    border-radius: 17px;
-  }
-  
-  .slider.round:before {
-    border-radius: 50%;
-  }
 
-  .view-metadata-button {
+.view-metadata-button {
     background-color: #135c97;
     color:white;
     cursor: pointer;
@@ -214,34 +211,29 @@ body {
     font-size: 15px;
     line-height:20px;
     vertical-align: center;
-  }
-
-  .open-metadata, .view-metadata-button:hover {
+}
+.open-metadata, .view-metadata-button:hover {
     background-color: #135c97;
-  }
-
-  .metadata {
+}
+.metadata {
     padding: 18px;
     display: none;
     overflow: hidden;
     background-color: #f1f1f1;
-  }
-
-  .view-metadata-button:after {
+}
+.view-metadata-button:after {
     content: "+"; /* Unicode character for "plus" sign (+) */
     font-size: 23px;
     float: right;
-    margin-left: 5px;
-    
-  }
-  
-  .open-metadata:after {
+    margin-left: 5px;    
+}
+.open-metadata:after {
     content: "–";
     font-size: 23px; /* Unicode character for "minus" sign (-) */
-  }
+}
 
   /*View Download Button*/
-  .view-download-button {
+.view-download-button {
     background-color: #135c97;
     color:white;
     cursor: pointer;
@@ -254,28 +246,93 @@ body {
     font-size: 15px;
     line-height:20px;
     vertical-align: center;
-  }
-
-  .open-download, .view-download-button:hover {
+}
+.open-download, .view-download-button:hover {
     background-color: #135c97;
-  }
-
-  .downloads {
+}
+.downloads {
     padding: 18px;
     display: none;
     overflow: hidden;
     background-color: #f1f1f1;
-  }
-
-  .view-download-button:after {
-    content: "+"; /* Unicode character for "plus" sign (+) */
+}
+.view-download-button:after {
+    content: "+";
     font-size: 23px;
     float: right;
-    margin-left: 5px;
-    
+    margin-left: 5px;  
+}
+.open-download:after {
+    content: "–";
+    font-size: 23px;
+}
+
+
+
+/*Checkboxes*/
+.media-selector {
+	display: none;
+	position: relative;
+	padding-left: 35px;
+	margin: 0px 15px 12px 15px;
+	cursor: pointer;
+	font-size: 20px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
   }
   
-  .open-download:after {
-    content: "–";
-    font-size: 23px; /* Unicode character for "minus" sign (-) */
+  /* Hide the browser's default checkbox */
+  .media-selector input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 22px;
+	width: 22px;
+	background-color: #eee;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .media-selector:hover input ~ .checkmark {
+	background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .media-selector input:checked ~ .checkmark {
+	background-color: #135c97;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+	content: "";
+	position: absolute;
+	display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .media-selector input:checked ~ .checkmark:after {
+	display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .media-selector .checkmark:after {
+	left: 7px;
+	top: 3px;
+	width: 5px;
+	height: 10px;
+	border: solid white;
+	border-width: 0 3px 3px 0;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
   }
