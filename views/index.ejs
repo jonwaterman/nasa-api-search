@@ -10,6 +10,7 @@
       
     <div class="container">
         <h1 class="title">NASA Image Search</h1>
+
         <div id="search-switch">
             <label class="switch-label">Basic</label>
             <label class="switch">
@@ -25,7 +26,7 @@
 
             <div style="text-align: center;">
                 <label class="media-selector">Images
-                    <input type="checkbox" name="include_image"checked="checked">
+                    <input type="checkbox" name="include_image" checked="checked">
                     <span class="checkmark"></span>
                 </label>
                 <label class="media-selector">Video
@@ -42,7 +43,7 @@
             <input name="year_end" type="text" class="adv-search" placeholder="Specify by end year...">
             <input name="location" type="text" class="adv-search" placeholder="Specify by location...">
         
-          <input type="submit" class="ghost-button" value="Get Search Results">
+          <input type="submit" class="submit-button" value="Get Search Results">
         </form>
         
         <% if(results !== null){ %>
@@ -77,6 +78,16 @@
                     <div class="metadata">
                         <p>Loading https://images-assets.nasa.gov/<%=results.collection.items[i].data[0].media_type%>/<%=results.collection.items[i].data[0].nasa_id%>/metadata.json</p>
                     </div>
+
+                    <div class="results-spacer"></div>
+                    
+                    <% if(results.collection.items[i].links && results.collection.items[i].data[0].media_type){ %>
+
+                        <a href="https://twitter.com/home?status=Check out this <%=results.collection.items[i].data[0].media_type%>!%0A%0A<%=results.collection.items[i].data[0].title%> (preview):%0A<%=results.collection.items[i].links[0].href%>">
+                            <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c53e.png" alt="Twitter Logo" style="background-color:white; width:50px; height:50px; border: 2px solid #135c97;">
+                        </a>
+                    <%}%>
+                    
                 </div>                
                 <div class="results-spacer"></div>
             <% } %>
@@ -110,7 +121,6 @@
             //View Downloads Button
             var downloads_button = document.getElementsByClassName("view-download-button");
             var i;
-
             for (i = 0; i < downloads_button.length; i++) {
                 downloads_button[i].addEventListener("click", function() {
                     this.classList.toggle("open-downloads");
@@ -125,7 +135,6 @@
                                 content.appendChild(node); 
                         }
                     })
-
                     if (content.style.display === "block") {
                         content.style.display = "none";
                     } else {
@@ -133,15 +142,13 @@
                     }
                 });
             }
-
+            
             //View Metadata Button
             var metadata_button = document.getElementsByClassName("view-metadata-button");
             var j;
-
             for (j = 0; j < metadata_button.length; j++) {
                 metadata_button[j].addEventListener("click", function() {
                     this.classList.toggle("open-metadata");
-
                     let url = this.getAttribute("url")
                     let content = this.nextElementSibling;
                     var objectFound = false;
@@ -162,7 +169,6 @@
                         content.appendChild(node);
                     }
                     })
-
                     if (content.style.display === "block") {
                     content.style.display = "none";
                     } else {
@@ -170,6 +176,7 @@
                     }
                 });
             }
+            
         </script>
   </body>
 </html>

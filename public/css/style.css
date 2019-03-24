@@ -150,11 +150,11 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
   
-.ghost-button {
+.submit-button {
     background-color: #135c97;
     padding:10px 30px;
     width: 100%;
-    min-width: 350px;
+	min-width: 350px;
     -webkit-transition: all 0.1s ease-in-out;
     -moz-transition: all 0.1s ease-in-out;
     -ms-transition: all 0.1s ease-in-out;
@@ -162,7 +162,7 @@ input:checked + .slider:before {
     transition: all 0.1s ease-in-out;
     color: white;
 }
-.ghost-button:hover {
+.submit-button:hover {
     border:3px solid #ddd;
     background-color: #135c97;
 } 
@@ -196,9 +196,7 @@ img {
     display: block;
 }
 
-
-
-.view-metadata-button {
+.view-download-button, .view-metadata-button {
     background-color: #135c97;
     color:white;
     cursor: pointer;
@@ -207,12 +205,11 @@ img {
     width: 100%;
     border: none;
     text-align: left;
-    outline: none;
     font-size: 15px;
     line-height:20px;
     vertical-align: center;
 }
-.open-metadata, .view-metadata-button:hover {
+.open-metadata, .view-metadata-button:hover, .open-download, .view-download-button:hover {
     background-color: #135c97;
 }
 .metadata {
@@ -221,53 +218,22 @@ img {
     overflow: hidden;
     background-color: #f1f1f1;
 }
-.view-metadata-button:after {
-    content: "+"; /* Unicode character for "plus" sign (+) */
-    font-size: 23px;
-    float: right;
-    margin-left: 5px;    
-}
-.open-metadata:after {
-    content: "–";
-    font-size: 23px; /* Unicode character for "minus" sign (-) */
-}
-
-  /*View Download Button*/
-.view-download-button {
-    background-color: #135c97;
-    color:white;
-    cursor: pointer;
-    padding: 10px 18px;
-    height: 50px;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 15px;
-    line-height:20px;
-    vertical-align: center;
-}
-.open-download, .view-download-button:hover {
-    background-color: #135c97;
-}
 .downloads {
     padding: 18px;
     display: none;
     overflow: hidden;
     background-color: #f1f1f1;
 }
-.view-download-button:after {
-    content: "+";
+.view-download-button:after, .view-metadata-button:after {
+    content: "+"; /* Unicode character for "plus" sign (+) */
     font-size: 23px;
     float: right;
-    margin-left: 5px;  
+    margin-left: 5px;    
 }
-.open-download:after {
+.open-metadata:after, .open-download:after {
     content: "–";
-    font-size: 23px;
+    font-size: 23px; /* Unicode character for "minus" sign (-) */
 }
-
-
 
 /*Checkboxes*/
 .media-selector {
