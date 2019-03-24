@@ -7,31 +7,12 @@ body {
 p {
     text-align: left;
     margin-left: 20px;
-
 }
 
 .container {
     width: 600px;
     margin: 0 auto;
 }
-
-/* fieldset {
-    display: block;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-    -webkit-padding-before: 0em;
-    -webkit-padding-start: 0em;
-    -webkit-padding-end: 0em;
-    -webkit-padding-after: 0em;
-    border: 0px;
-    border-image-source: initial;
-    border-image-slice: initial;
-    border-image-width: initial;
-    border-image-outset: initial;
-    border-image-repeat: initial;
-    min-width: -webkit-min-content;
-	padding: 30px;
-} */
 
 .main-search {
     display: block;
@@ -92,64 +73,131 @@ p {
 #search-switch {
 	float: right;
 }
-/*Switch Code*/
-/* The switch - the box around the slider */
+
+/* Switch is box around slider*/
 .switch {
-  position: relative;
-  display: inline-block;
-  width: 30px;
-  height: 17px;
-  /*float: right;*/
-  margin: 0px 5px;
-  vertical-align: middle;
+	position: relative;
+	display: inline-block;
+	width: 30px;
+	height: 17px;
+	margin: 0px 5px;
+  	vertical-align: middle;
 }
-/* Hide default HTML checkbox */
+/* Hides default checkbox */
 .switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
+  	opacity: 0;
+  	width: 0;
+  	height: 0;
 }
 /* The slider */
 .slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .2s;
-  transition: .2s;
+  	position: absolute;
+  	cursor: pointer;
+  	top: 0;
+  	left: 0;
+  	right: 0;
+  	bottom: 0;
+  	background-color: #ccc;
+  	-webkit-transition: .2s;
+  	transition: .2s;
 }
 .slider:before {
-  position: absolute;
-  content: "";
-  height: 13px;
-  width: 13px;
-  left: 2px;
-  bottom: 2px;
-  background-color: white;
-  -webkit-transition: .2s;
-  transition: .2s;
+  	position: absolute;
+  	content: "";
+  	height: 13px;
+  	width: 13px;
+  	left: 2px;
+  	bottom: 2px;
+  	background-color: white;
+  	-webkit-transition: .2s;
+  	transition: .2s;
 }
 input:checked + .slider {
-  background-color: #135c97;
+  	background-color: #135c97;
 }
 input:focus + .slider {
-  box-shadow: 0 0 1px #135c97;
+  	box-shadow: 0 0 1px #135c97;
 }
 input:checked + .slider:before {
-  -webkit-transform: translateX(13px);
-  -ms-transform: translateX(13px);
-  transform: translateX(13px);
+  	-webkit-transform: translateX(13px);
+  	-ms-transform: translateX(13px);
+  	transform: translateX(13px);
 }
 /* Rounded sliders */
 .slider.round {
-  border-radius: 17px;
+  	border-radius: 17px;
 }
 .slider.round:before {
-  border-radius: 50%;
+  	border-radius: 50%;
 }
+
+/*Checkboxes for media selector*/
+.media-selector {
+	display: none;
+	position: relative;
+	padding-left: 35px;
+	margin: 0px 15px 12px 15px;
+	cursor: pointer;
+	font-size: 20px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+  
+  /* Hides default checkbox */
+.media-selector input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
+}
+  
+  /* Creates custom checkbox */
+.checkmark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 22px;
+	width: 22px;
+	background-color: #eee;
+}
+  
+  /* Adds a grey background to checkbox when mouse hovers over */
+.media-selector:hover input ~ .checkmark {
+	background-color: #ccc;
+}
+  
+  /* Makes background blue when checked */
+.media-selector input:checked ~ .checkmark {
+	background-color: #135c97;
+}
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
+  
+  /* Show the checkmark when checked */
+.media-selector input:checked ~ .checkmark:after {
+	display: block;
+}
+  
+  /* Style the checkmark/indicator */
+.media-selector .checkmark:after {
+	left: 7px;
+	top: 3px;
+	width: 5px;
+	height: 10px;
+	border: solid white;
+	border-width: 0 3px 3px 0;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+  }
   
 .submit-button {
     background-color: #135c97;
@@ -231,75 +279,9 @@ img {
     float: right;
     margin-left: 5px;    
 }
-.open-metadata:after, .open-download:after {
+.open-metadata:after, .open-downloads:after {
     content: "–";
     font-size: 23px; /* Unicode character for "minus" sign (-) */
 }
 
-/*Checkboxes*/
-.media-selector {
-	display: none;
-	position: relative;
-	padding-left: 35px;
-	margin: 0px 15px 12px 15px;
-	cursor: pointer;
-	font-size: 20px;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-  }
-  
-  /* Hide the browser's default checkbox */
-  .media-selector input {
-	position: absolute;
-	opacity: 0;
-	cursor: pointer;
-	height: 0;
-	width: 0;
-  }
-  
-  /* Create a custom checkbox */
-  .checkmark {
-	position: absolute;
-	top: 0;
-	left: 0;
-	height: 22px;
-	width: 22px;
-	background-color: #eee;
-  }
-  
-  /* On mouse-over, add a grey background color */
-  .media-selector:hover input ~ .checkmark {
-	background-color: #ccc;
-  }
-  
-  /* When the checkbox is checked, add a blue background */
-  .media-selector input:checked ~ .checkmark {
-	background-color: #135c97;
-  }
-  
-  /* Create the checkmark/indicator (hidden when not checked) */
-  .checkmark:after {
-	content: "";
-	position: absolute;
-	display: none;
-  }
-  
-  /* Show the checkmark when checked */
-  .media-selector input:checked ~ .checkmark:after {
-	display: block;
-  }
-  
-  /* Style the checkmark/indicator */
-  .media-selector .checkmark:after {
-	left: 7px;
-	top: 3px;
-	width: 5px;
-	height: 10px;
-	border: solid white;
-	border-width: 0 3px 3px 0;
-	-webkit-transform: rotate(45deg);
-	-ms-transform: rotate(45deg);
-	transform: rotate(45deg);
-  }
+

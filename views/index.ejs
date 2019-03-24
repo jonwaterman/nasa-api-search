@@ -81,16 +81,17 @@
 
                     <div class="results-spacer"></div>
                     
-                        <a href='https://twitter.com/intent/tweet?url=https://nasa-api-search.herokuapp.com&text=Wow! Look up "<%=results.collection.items[i].data[0].title%>" on ' style="display:inline-block">
+                    <div class="social-media-sharing">
+                        <a href='https://twitter.com/intent/tweet?url=https://nasa-api-search.herokuapp.com&text=Look up "<%=results.collection.items[i].data[0].title%>" on ' style="display:inline-block">
                             <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c53e.png" alt="Twitter Logo" style="background-color:white; width:45px; height:45px; border: 2px solid #135c97;">
                         </a>
-                        <a href='mailto: ?subject=Check out this <%=results.collection.items[i].data[0].media_type%>!&body=Wow! Look up "<%=results.collection.items[i].data[0].title%>" on https://nasa-api-search.herokuapp.com' style="display:inline-block">
+                        <a href='mailto: ?subject=Check out this <%=results.collection.items[i].data[0].media_type%>!&body=Look up "<%=results.collection.items[i].data[0].title%>" on https://nasa-api-search.herokuapp.com' style="display:inline-block">
                             <img src="https://d15omoko64skxi.cloudfront.net/wp-content/uploads/2016/06/envelope.png" alt="Email Logo" style="background-color:white; width:45px; height:45px; border: 2px solid #135c97;">
                         </a>
-                        <a href='https://www.facebook.com/sharer/sharer.php?u=https://nasa-api-search.herokuapp.com&quote=Wow! Look up "<%=results.collection.items[i].data[0].title%>" on:' style="display:inline-block">
+                        <a href='https://www.facebook.com/sharer/sharer.php?u=https://nasa-api-search.herokuapp.com&quote=Look up "<%=results.collection.items[i].data[0].title%>" on:' style="display:inline-block">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/F_icon_reversed.svg/1024px-F_icon_reversed.svg.png" alt="Facebook Logo" style="background-color:white; width:45px; height:45px; border: 2px solid #135c97;">
                         </a>
-                    
+                    </div>
                 </div>                
                 <div class="results-spacer"></div>
             <% } %>
@@ -135,7 +136,7 @@
                         for(j = 0; j < data.length - 1; j++){
                                 let node = document.createElement("p");
                                 node.innerHTML = "<a href=" + data[j] +">" + data[j] + "</a>: ";
-                                content.appendChild(node); 
+                                content.appendChild(node);
                         }
                     })
                     if (content.style.display === "block") {
