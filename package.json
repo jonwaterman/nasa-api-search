@@ -1,7 +1,7 @@
 {
-  "name": "nasa_image_search",
+  "name": "api",
   "version": "1.0.0",
-  "description": "",
+  "description": "A web application designed to allow a user to search for media on NASA's API and intuitively display the search results.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
