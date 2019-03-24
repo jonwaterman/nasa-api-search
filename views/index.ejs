@@ -51,12 +51,15 @@
                     <% if(results.collection.items[i].data[0].nasa_id){ %>
                         <p><b>NASA ID: </b><%=results.collection.items[i].data[0].nasa_id%></p>
                     <%}%>
-                    <% if(results.collection.items[i].links){ %>
-                        <p><b>Link: </b><a href='<%=results.collection.items[i].links[0].href%>'><%=results.collection.items[i].links[0].href%></a></p>
-                    <%}%>
+
+                    <button class="view-download-button" url="<%=results.collection.items[i].href%>">Links to Download</button>
+                    <div class="downloads">
+                        <p>Loading <%=results.collection.items[i].href%></p>
+                    </div>
+                    <div class="results-spacer"></div>
                     <button class="view-metadata-button" url="https://images-assets.nasa.gov/<%=results.collection.items[i].data[0].media_type%>/<%=results.collection.items[i].data[0].nasa_id%>/metadata.json">Metadata</button>
-                    <div class="metadata" >
-                        <p>https://images-api.nasa.gov/metadata/<%=results.collection.items[i].data[0].nasa_id%></p>
+                    <div class="metadata">
+                        <p>Loading https://images-assets.nasa.gov/<%=results.collection.items[i].data[0].media_type%>/<%=results.collection.items[i].data[0].nasa_id%>/metadata.json</p>
                     </div>
                 </div>                
                 <div class="results-spacer"></div>
@@ -87,47 +90,68 @@
                     input3.style.display = "none";    
                 }
             }
-
-            //View Metadata Button
-            var button = document.getElementsByClassName("view-metadata-button");
+            //View Downloads Button
+            var downloads_button = document.getElementsByClassName("view-download-button");
             var i;
 
-            for (i = 0; i < button.length; i++) {
-            button[i].addEventListener("click", function() {
-                this.classList.toggle("open");
-
-                let url = this.getAttribute("url")
-                let content = this.nextElementSibling;
-                var objectFound = false;
-                fetch(url).then(res => res.json()).then(data => {
-                    content.innerHTML = "";
-                    for(let key in data){
-                        if(!(typeof data[key] === "object")) {
-                            let node = document.createElement("p");
-                            node.innerHTML = "<b>" + key + "</b>: " + data[key];
-                            content.appendChild(node);
-                        } else {
-                            objectFound = true;
+            for (i = 0; i < downloads_button.length; i++) {
+                downloads_button[i].addEventListener("click", function() {
+                    this.classList.toggle("open-downloads");
+                    let url = this.getAttribute("url")
+                    let content = this.nextElementSibling;
+                    var objectFound = false;
+                    fetch(url).then(res => res.json()).then(data => {
+                        content.innerHTML = "";
+                        for(j = 0; j < data.length - 1; j++){
+                                let node = document.createElement("p");
+                                node.innerHTML = "<a href=" + data[j] +">" + data[j] + "</a>: ";
+                                content.appendChild(node); 
                         }
-                        
-                    }
-                if(objectFound) {
-                    let node = document.createElement("p");
-                    node.innerHTML = "<i> Not all metadata shown. For full list, visit: " + url;
-                    content.appendChild(node);
-                }
-                })
+                    })
 
-                if (content.style.display === "block") {
-                content.style.display = "none";
-                } else {
-                content.style.display = "block";
-                }
-            });
+                    if (content.style.display === "block") {
+                        content.style.display = "none";
+                    } else {
+                        content.style.display = "block";
+                    }
+                });
             }
 
-            function isObject (value) {
-                return value && typeof value === 'object' && value.constructor === Object;
+            //View Metadata Button
+            var metadata_button = document.getElementsByClassName("view-metadata-button");
+            var j;
+
+            for (j = 0; j < metadata_button.length; j++) {
+                metadata_button[j].addEventListener("click", function() {
+                    this.classList.toggle("open-metadata");
+
+                    let url = this.getAttribute("url")
+                    let content = this.nextElementSibling;
+                    var objectFound = false;
+                    fetch(url).then(res => res.json()).then(data => {
+                        content.innerHTML = "";
+                        for(let key in data){
+                            if(!(typeof data[key] === "object")) {
+                                let node = document.createElement("p");
+                                node.innerHTML = "<b>" + key + "</b>: " + data[key];
+                                content.appendChild(node);
+                            } else {
+                                objectFound = true;
+                            } 
+                        }
+                    if(objectFound) {
+                        let node = document.createElement("p");
+                        node.innerHTML = "<i> Not all metadata shown. For full list, visit: " + url;
+                        content.appendChild(node);
+                    }
+                    })
+
+                    if (content.style.display === "block") {
+                    content.style.display = "none";
+                    } else {
+                    content.style.display = "block";
+                    }
+                });
             }
         </script>
   </body>

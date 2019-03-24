@@ -203,7 +203,7 @@ body {
 
   .view-metadata-button {
     background-color: #135c97;
-    color: rgb(255, 255, 255);
+    color:white;
     cursor: pointer;
     padding: 10px 18px;
     height: 50px;
@@ -212,9 +212,11 @@ body {
     text-align: left;
     outline: none;
     font-size: 15px;
+    line-height:20px;
+    vertical-align: center;
   }
 
-  .open, .view-metadata-button:hover {
+  .open-metadata, .view-metadata-button:hover {
     background-color: #135c97;
   }
 
@@ -226,12 +228,54 @@ body {
   }
 
   .view-metadata-button:after {
-    content: '\02795'; /* Unicode character for "plus" sign (+) */
-    font-size: 13px;
+    content: "+"; /* Unicode character for "plus" sign (+) */
+    font-size: 23px;
     float: right;
     margin-left: 5px;
+    
   }
   
-  .open:after {
-    content: "\2796"; /* Unicode character for "minus" sign (-) */
+  .open-metadata:after {
+    content: "–";
+    font-size: 23px; /* Unicode character for "minus" sign (-) */
+  }
+
+  /*View Download Button*/
+  .view-download-button {
+    background-color: #135c97;
+    color:white;
+    cursor: pointer;
+    padding: 10px 18px;
+    height: 50px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    line-height:20px;
+    vertical-align: center;
+  }
+
+  .open-download, .view-download-button:hover {
+    background-color: #135c97;
+  }
+
+  .downloads {
+    padding: 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+  }
+
+  .view-download-button:after {
+    content: "+"; /* Unicode character for "plus" sign (+) */
+    font-size: 23px;
+    float: right;
+    margin-left: 5px;
+    
+  }
+  
+  .open-download:after {
+    content: "–";
+    font-size: 23px; /* Unicode character for "minus" sign (-) */
   }
