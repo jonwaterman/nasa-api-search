@@ -14,6 +14,7 @@ p {
     width: 600px;
     margin: 0 auto;
 }
+
 /* fieldset {
     display: block;
     -webkit-margin-start: 0px;
@@ -62,7 +63,7 @@ p {
     display: none;
     font-weight:300;
     width: 100%;
-    font-size: 15px;
+    font-size: 18px;
     border:0px;
     outline: none;
     width: 100%;
