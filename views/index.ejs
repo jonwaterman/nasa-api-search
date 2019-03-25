@@ -42,14 +42,14 @@
             <input name="year_start" type="text" class="adv-search" placeholder="Specify by start year...">
             <input name="year_end" type="text" class="adv-search" placeholder="Specify by end year...">
             <input name="location" type="text" class="adv-search" placeholder="Specify by location...">
-        
-          <input type="submit" class="submit-button" value="Get Search Results">
+            <input type="submit" class="submit-button" value="Get Search Results">
         </form>
         
         <% if(results !== null){ %>
             <h3><%=results.collection.metadata.total_hits%> results</h1>   
             <%  for (i = 0; i < results.collection.items.length; i++) {%>
                 <div class="results-box"><h1><%=results.collection.items[i].data[0].title%></h1> 
+                    
                     <% if(results.collection.items[i].links){ %>
                         <img src="<%=results.collection.items[i].links[0].href%>" alt="<%=results.collection.items[i].data[0].title%>">
                     <%}%>
@@ -68,14 +68,16 @@
                     <% if(results.collection.items[i].data[0].nasa_id){ %>
                         <p><b>NASA ID: </b><%=results.collection.items[i].data[0].nasa_id%></p>
                     <%}%>
-
+                    
                     <button class="view-download-button" url="<%=results.collection.items[i].href%>">Links to Download</button>
                     <div class="downloads">
-                        <p>Loading <%=results.collection.items[i].href%></p>
+                        <p style="display:none">Loading <%=results.collection.items[i].href%></p>
                         <p>If link fails to load, enter the link above in another tab to access the information.</p>
                         <!--In very rare cases, the data will not display in the same window due to access control problems, so another option is provided to the user-->
                     </div>
+
                     <div class="results-spacer"></div>
+
                     <button class="view-metadata-button" url="https://images-assets.nasa.gov/<%=results.collection.items[i].data[0].media_type%>/<%=results.collection.items[i].data[0].nasa_id%>/metadata.json">Metadata</button>
                     <div class="metadata">
                         <p>Loading https://images-assets.nasa.gov/<%=results.collection.items[i].data[0].media_type%>/<%=results.collection.items[i].data[0].nasa_id%>/metadata.json</p>
@@ -96,24 +98,21 @@
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/F_icon_reversed.svg/1024px-F_icon_reversed.svg.png" alt="Facebook Logo" style="background-color:white; width:45px; height:45px; border: 2px solid #135c97;">
                         </a>
                     </div>
-                </div>                
+                </div>   
+
                 <div class="results-spacer"></div>
             <% } %>
-            
         <% } %>
 
         <% if(error !== null){ %>
           <p><%= error %></p>
         <% } %>
     </div>
+
         <script>
-            var fav_NASA_ID = [];
-            function addToFavorites(NASA_ID) {
-                fav_NASA_ID.push(NASA_ID)
-            }
+            //Show advanced search if the switch is flipped to 'advanced'
             function showAdvancedSearch() {
                 var checkBox = document.getElementById("search-checkbox");
-
                 var advSearch = document.getElementsByClassName("adv-search");
                 var mediaSelector = document.getElementsByClassName("media-selector");
 
@@ -130,7 +129,8 @@
                     }
                 }
             }
-            //View Downloads Button
+
+            //If the 'Links to Download' button is pressed, displays links to access media elements
             var downloads_button = document.getElementsByClassName("view-download-button");
             var i;
             for (i = 0; i < downloads_button.length; i++) {
@@ -155,7 +155,7 @@
                 });
             }
             
-            //View Metadata Button
+            //If the 'Metadata" button is pressed, displays the metadata for the media
             var metadata_button = document.getElementsByClassName("view-metadata-button");
             var j;
             for (j = 0; j < metadata_button.length; j++) {
@@ -168,6 +168,8 @@
                         content.innerHTML = "";
                         for(let key in data){
                             if(!(typeof data[key] === "object")) {
+                                //Some media items have certain terms with arrays thousands of lines long
+                                //To keep the displayed metadata short, those arrays within the data are excluded
                                 let node = document.createElement("p");
                                 node.innerHTML = "<b>" + key + "</b>: " + data[key];
                                 content.appendChild(node);
@@ -176,6 +178,7 @@
                             } 
                         }
                     if(objectFound) {
+                        
                         let node = document.createElement("p");
                         node.innerHTML = "<i> Not all metadata shown. For full list, visit: " + url;
                         content.appendChild(node);
@@ -188,7 +191,6 @@
                     }
                 });
             }
-            
         </script>
   </body>
 </html>

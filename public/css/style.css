@@ -14,6 +14,12 @@ p {
     margin: 0 auto;
 }
 
+.title {
+    color: #135c97;
+    text-align: center;
+    font-size: 40px;
+}
+
 .main-search {
     display: block;
     font-weight:300;
@@ -25,7 +31,7 @@ p {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    color: #135c97; /*The primary color of the NASA logo as sampled from a stock photo*/
+    color: #135c97; /*The primary color of the NASA logo as sampled from online*/
     background: #fff;
     font-family: Open Sans,Verdana;
     padding: 10px 15px;
@@ -66,16 +72,17 @@ p {
     border-bottom:1px solid #ddd;
 }
 
+#search-switch { 
+	/*Contains all elements for the switch controlling if advanced search is shown*/
+	float: right;
+}
 .switch-label {
+	/*Labels each option for the switch*/
 	display: inline-block;
 	font-size: 12px;
 }
-#search-switch {
-	float: right;
-}
-
-/* Switch is box around slider*/
 .switch {
+	/*Contains the original checkbox input and the round slider*/
 	position: relative;
 	display: inline-block;
 	width: 30px;
@@ -83,14 +90,14 @@ p {
 	margin: 0px 5px;
   	vertical-align: middle;
 }
-/* Hides default checkbox */
 .switch input {
+	/* Hides default checkbox */
   	opacity: 0;
   	width: 0;
   	height: 0;
 }
-/* The slider */
 .slider {
+	/*The visual part of the switch seen by the user*/
   	position: absolute;
   	cursor: pointer;
   	top: 0;
@@ -102,6 +109,7 @@ p {
   	transition: .2s;
 }
 .slider:before {
+	/*The circle that moves in front of the slider background*/
   	position: absolute;
   	content: "";
   	height: 13px;
@@ -113,26 +121,27 @@ p {
   	transition: .2s;
 }
 input:checked + .slider {
+	/*Changes switch color to blue when flipped to advanced*/
   	background-color: #135c97;
 }
-input:focus + .slider {
-  	box-shadow: 0 0 1px #135c97;
-}
 input:checked + .slider:before {
+	/*Moves the switch when clicked by the user*/
   	-webkit-transform: translateX(13px);
   	-ms-transform: translateX(13px);
   	transform: translateX(13px);
 }
-/* Rounded sliders */
+
 .slider.round {
+	/* Styles the rounded moving circle */
   	border-radius: 17px;
 }
 .slider.round:before {
   	border-radius: 50%;
 }
 
-/*Checkboxes for media selector*/
+
 .media-selector {
+	/*Checkboxes for media selector*/
 	display: none;
 	position: relative;
 	padding-left: 35px;
@@ -144,18 +153,16 @@ input:checked + .slider:before {
 	-ms-user-select: none;
 	user-select: none;
 }
-  
-  /* Hides default checkbox */
 .media-selector input {
+	/* Hides default checkbox */
 	position: absolute;
 	opacity: 0;
 	cursor: pointer;
 	height: 0;
 	width: 0;
 }
-  
-  /* Creates custom checkbox */
 .checkmark {
+	/* Creates custom shape of checkbox */
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -163,31 +170,26 @@ input:checked + .slider:before {
 	width: 22px;
 	background-color: #eee;
 }
-  
-  /* Adds a grey background to checkbox when mouse hovers over */
 .media-selector:hover input ~ .checkmark {
+	/* Adds a grey background to checkbox when mouse hovers over */
 	background-color: #ccc;
 }
-  
-  /* Makes background blue when checked */
 .media-selector input:checked ~ .checkmark {
+	/* Makes background blue when checked */
 	background-color: #135c97;
 }
-  
-  /* Create the checkmark/indicator (hidden when not checked) */
 .checkmark:after {
+	/* Hides checkmark when not checked */
 	content: "";
 	position: absolute;
 	display: none;
 }
-  
-  /* Show the checkmark when checked */
 .media-selector input:checked ~ .checkmark:after {
+	/* Show the checkmark when checked */
 	display: block;
 }
-  
-  /* Style the checkmark/indicator */
 .media-selector .checkmark:after {
+	/* Styles the checkmark inside the box */
 	left: 7px;
 	top: 3px;
 	width: 5px;
@@ -215,8 +217,8 @@ input:checked + .slider:before {
     border:3px solid #ddd;
     background-color: #135c97;
 } 
-
 .results-box {
+	/*Contains the results for each media item returned by the search*/
     border: 5px solid #135c97;
     padding: 10px;
     margin: 25px;
@@ -227,13 +229,8 @@ input:checked + .slider:before {
 }
 
 .results-spacer {
+	/*Used to put space between some elements on the page*/
     height: 15px;
-}
-
-.title {
-    color: #135c97;
-    text-align: center;
-    font-size: 40px;
 }
 
 img {
@@ -259,6 +256,7 @@ img {
     vertical-align: center;
 }
 .open-metadata, .view-metadata-button:hover, .open-download, .view-download-button:hover {
+	/*When buttons are hovered over, color of buttons darkens slightly*/
     background-color: #0f4672;
 }
 .metadata {
@@ -274,14 +272,14 @@ img {
     background-color: #f1f1f1;
 }
 .view-download-button:after, .view-metadata-button:after {
-    content: "+"; /* Unicode character for "plus" sign (+) */
+	/*Displays a plus sign when drop-down is closed*/
+    content: "+";
     font-size: 23px;
     float: right;
     margin-left: 5px;    
 }
 .open-metadata:after, .open-downloads:after {
+	/*Displays a minus sign when drop-down is open*/
     content: "–";
-    font-size: 23px; /* Unicode character for "minus" sign (-) */
+    font-size: 23px;
 }
-
-
